@@ -9,12 +9,15 @@
 #WANMAC: e6b9
 #CMMAC:  e6b7
 
+#TC8715D    B7
+#TC8715DC1E6B7
+
 $WAPs = Get-WAPs
 $Targets = $WAPS | where {$_.ssid -like "TC*"}
 
 # Attach DefaultPassword to Targets
 ForEach ($Target in $Targets) {
-    $Target | Add-Member -Name DefaultPassword -MemberType NoteProperty -Value $("$($Target.SSID.Substring(0,6))" + '{0:X}' -f ([int64]"0x$($Target.BSSID1.replace(':','').Substring($Target.BSSID1.replace(':','').length - 4))") + "$($Target.SSID.Substring($Target.SSID.Length - 2))")
+    $Target | Add-Member -Name DefaultPassword -MemberType NoteProperty -Value $("$($Target.SSID.Substring(0,6))" + '{0:X}' -f ([int64]"0x$($Target.BSSID1.replace(':','').Substring(6).remove(4))") + "$($Target.SSID.Substring($Target.SSID.Length - 2))")
 }
 
 # Require user to confirm to proceide
