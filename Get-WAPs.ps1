@@ -16,17 +16,17 @@ Channel\s+:\s(?<Channel>\w+)\r\n
         If ($Network -match $RegEx) {
             $Network = $Network.Trim()
             [pscustomobject]@{
-                SSID =  (($Network -split "\n")[0] -split ":",2)[1]
-                NetworkType = (($Network -split "\n")[1] -split ":",2)[1]
-                AuthenticationType = (($Network -split "\n")[2] -split ":",2)[1]
-                Encryption =  (($Network -split "\n")[3] -split ":",2)[1]
-                BSSID1 =  (($Network -split "\n")[4] -split ":",2)[1]
-                SignalPercentage = (($Network -split "\n")[5] -split ":",2)[1]
-                RadioType =  (($Network -split "\n")[6] -split ":",2)[1]
-                Channel =  (($Network -split "\n")[7] -split ":",2)[1]
+                SSID =  ((($Network -split "\n")[0] -split ":",2)[1]).Trim()
+                NetworkType = ((($Network -split "\n")[1] -split ":",2)[1]).Trim()
+                AuthenticationType = ((($Network -split "\n")[2] -split ":",2)[1]).Trim()
+                Encryption =  ((($Network -split "\n")[3] -split ":",2)[1]).Trim()
+                BSSID1 =  ((($Network -split "\n")[4] -split ":",2)[1]).Trim()
+                SignalPercentage = ((($Network -split "\n")[5] -split ":",2)[1]).Trim()
+                RadioType =  ((($Network -split "\n")[6] -split ":",2)[1]).Trim()
+                Channel =  ((($Network -split "\n")[7] -split ":",2)[1]).Trim()
             }
         }
     }
 
-    $WiFiNetworks | Sort SignalPercentage -Descending | ft
+    $WiFiNetworks | Sort SignalPercentage -Descending
 }
