@@ -1,18 +1,4 @@
-﻿# If TC8715D
-# 3 segment default pass
-# TC8715D + last 4 CMAC + last 2 SSID
-# If TC8751
-# 3 segment default pass
-# TC8715 + last 4 CMAC + last 2 SSID
-# "$(-join ($target.BSSID1.Split(":")[4..5]))"#BSSID1: e6bd
-#BSSID2: e6be
-#WANMAC: e6b9
-#CMMAC:  e6b7
-
-#TC8715D    B7
-#TC8715DC1E6B7
-
-$WAPs = Get-WAPs
+﻿$WAPs = Get-WAPs
 $Targets = $WAPS | where {$_.ssid -like "TC*"}
 
 # Attach DefaultPassword to Targets
