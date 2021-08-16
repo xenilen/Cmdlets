@@ -1,4 +1,3 @@
-﻿# FOR CONNECTING TO BACKDOOR LOCATED IN C:\Windows:security
 
 $routerAddress = "localhost"
 $port = "55555"
